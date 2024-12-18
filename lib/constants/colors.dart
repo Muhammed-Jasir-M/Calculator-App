@@ -21,6 +21,8 @@ class CColors {
   static const inActiveSliderColor = Color(0xFF8D8E98);
   static const floatingButtonBgColor = Color(0xFF4C4F5E);
   static const floatingButtonTextColor = Color(0xFFFFFFFF);
+
+  static const greenText = Color(0xFF37DC85);
 }
 
 enum Gender { male, female }

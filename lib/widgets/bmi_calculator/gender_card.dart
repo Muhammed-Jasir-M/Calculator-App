@@ -1,6 +1,6 @@
 import 'package:calculator_app/constants/colors.dart';
-import 'package:calculator_app/widgets/bmi_calculator/bmi_calculator_screen/icon_details.dart';
-import 'package:calculator_app/widgets/bmi_calculator/bmi_calculator_screen/reusable_card.dart';
+import 'package:calculator_app/widgets/bmi_calculator/icon_details.dart';
+import 'package:calculator_app/widgets/bmi_calculator/reusable_card.dart';
 import 'package:flutter/material.dart';
 
 class CGenderCard extends StatelessWidget {

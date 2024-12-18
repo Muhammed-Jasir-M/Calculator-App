@@ -16,12 +16,12 @@ class CIconDetails extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(icon, size: 80.0),
+        Icon(icon, size: 70.0),
         const SizedBox(height: 15.0),
         Text(
           text,
           style: const TextStyle(
-            fontSize: 15,
+            fontSize: 18,
             color: CColors.iconTextColor,
           ),
         ),

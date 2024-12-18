@@ -1,6 +1,6 @@
 import 'package:calculator_app/constants/colors.dart';
-import 'package:calculator_app/widgets/bmi_calculator/bmi_calculator_screen/reusable_card.dart';
-import 'package:calculator_app/widgets/bmi_calculator/bmi_calculator_screen/round_icon_button.dart';
+import 'package:calculator_app/widgets/bmi_calculator/reusable_card.dart';
+import 'package:calculator_app/widgets/bmi_calculator/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -35,7 +35,7 @@ class CTextValueSliderAndButtonCard extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 15.0),
+            const SizedBox(height: 10.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -44,7 +44,7 @@ class CTextValueSliderAndButtonCard extends StatelessWidget {
                 Text(
                   value.toString(),
                   style: const TextStyle(
-                    fontSize: 50.0,
+                    fontSize: 45.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -52,6 +52,8 @@ class CTextValueSliderAndButtonCard extends StatelessWidget {
                 Text(unit),
               ],
             ),
+
+            // Add & Minus Button
             if (showButton)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +64,6 @@ class CTextValueSliderAndButtonCard extends StatelessWidget {
                       onValueChanged(value - 1);
                     },
                   ),
-                  const SizedBox(width: 10),
                   CRoundIconButton(
                     icon: FontAwesomeIcons.plus,
                     onPressed: () {
@@ -71,11 +72,13 @@ class CTextValueSliderAndButtonCard extends StatelessWidget {
                   ),
                 ],
               ),
+
+            // Slider Component
             if (showSlider)
               SliderTheme(
                 data: const SliderThemeData(
-                  thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                  overlayShape: RoundSliderOverlayShape(overlayRadius: 26.0),
+                  thumbShape: RoundSliderThumbShape(enabledThumbRadius: 14.0),
+                  overlayShape: RoundSliderOverlayShape(overlayRadius: 24.0),
                 ),
                 child: Slider(
                   value: value.toDouble(),

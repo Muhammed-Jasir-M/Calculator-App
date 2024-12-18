@@ -1,6 +1,8 @@
 import 'package:calculator_app/constants/colors.dart';
-import 'package:calculator_app/widgets/bmi_calculator/bmi_calculator_screen/text_value_button_slider_card.dart';
-import 'package:calculator_app/widgets/bmi_calculator/bmi_calculator_screen/gender_card.dart';
+import 'package:calculator_app/screens/bmi_calculator/bmi_result_screen.dart';
+import 'package:calculator_app/widgets/bmi_calculator/text_value_button_slider_card.dart';
+import 'package:calculator_app/widgets/bmi_calculator/gender_card.dart';
+import 'package:calculator_app/widgets/bmi_calculator/container_button.dart';
 import 'package:calculator_app/widgets/common/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -26,8 +28,9 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
       appBar: const CAppBar(title: 'BMI Calculator'),
       // Body
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // First Row
+          // Gender Card Row
           Expanded(
             child: Row(
               children: [
@@ -71,10 +74,11 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
             showSlider: true,
           ),
 
-          // Weight Button Card
+          // Weight & Age Card Row
           Expanded(
             child: Row(
               children: [
+                // Weight Button Card
                 CTextValueSliderAndButtonCard(
                   text: 'Weight',
                   value: weight,
@@ -104,23 +108,16 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
           ),
 
           // Calculate Button
-          Container(
-            height: 80.0,
-            width: double.infinity,
-            margin: const EdgeInsets.all(15.0),
-            decoration: BoxDecoration(
-              color: CColors.calculateButtonColor,
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: const Center(
-              child: Text(
-                'Calculate Your BMI',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
+          CContainerButton(
+            text: 'Calculate BMI',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const BmiResultScreen(),
                 ),
-              ),
-            ),
+              );
+            },
           ),
         ],
       ),
