@@ -20,10 +20,7 @@ class CIconDetails extends StatelessWidget {
         const SizedBox(height: 15.0),
         Text(
           text,
-          style: const TextStyle(
-            fontSize: 18,
-            color: CColors.iconTextColor,
-          ),
+          style: const TextStyle(fontSize: 18.0, color: CColors.iconTextColor),
         ),
       ],
     );

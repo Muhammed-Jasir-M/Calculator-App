@@ -20,16 +20,10 @@ class CGenderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: GestureDetector(
+      child: CReusableCard(
         onTap: onTap,
-        child: CReusableCard(
-          bgColor:
-              isSelected ? CColors.cardBgColor : CColors.inActiveCardBgColor,
-          child: CIconDetails(
-            icon: icon,
-            text: text,
-          ),
-        ),
+        bgColor: isSelected ? CColors.cardBgColor : CColors.inActiveCardBgColor,
+        child: CIconDetails(icon: icon, text: text),
       ),
     );
   }

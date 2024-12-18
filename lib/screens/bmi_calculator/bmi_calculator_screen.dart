@@ -1,5 +1,7 @@
 import 'package:calculator_app/constants/colors.dart';
 import 'package:calculator_app/screens/bmi_calculator/bmi_result_screen.dart';
+import 'package:calculator_app/utils/calculate_bmi.dart';
+import 'package:calculator_app/screens/calculator/calculator_screen.dart';
 import 'package:calculator_app/widgets/bmi_calculator/text_value_button_slider_card.dart';
 import 'package:calculator_app/widgets/bmi_calculator/gender_card.dart';
 import 'package:calculator_app/widgets/bmi_calculator/container_button.dart';
@@ -25,10 +27,25 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // Appbar
-      appBar: const CAppBar(title: 'BMI Calculator'),
+      appBar: CAppBar(
+        title: 'BMI Calculator',
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CalculatorScreen(),
+                ),
+              );
+            },
+            icon: const Icon(FontAwesomeIcons.calculator),
+          ),
+        ],
+      ),
       // Body
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Gender Card Row
           Expanded(
@@ -111,10 +128,20 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
           CContainerButton(
             text: 'Calculate BMI',
             onTap: () {
+              CCalculateBmi calc = CCalculateBmi(
+                height: height,
+                weight: weight,
+              );
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const BmiResultScreen(),
+                  builder: (context) => BmiResultScreen(
+                    bmiResult: calc.calculateBMI(),
+                    resultText: calc.getResult(),
+                    interpretation: calc.getInterpretation(),
+                    advice: calc.getAdvice(),
+                  ),
                 ),
               );
             },

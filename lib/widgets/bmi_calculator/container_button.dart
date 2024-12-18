@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class CContainerButton extends StatelessWidget {
   const CContainerButton({
     super.key,
-    required this.text, required this.onTap,
+    required this.text,
+    required this.onTap,
   });
 
   final String text;
@@ -25,10 +26,7 @@ class CContainerButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: const TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-            ),
+            style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
           ),
         ),
       ),

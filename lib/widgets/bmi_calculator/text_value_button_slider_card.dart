@@ -7,8 +7,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CTextValueSliderAndButtonCard extends StatelessWidget {
   const CTextValueSliderAndButtonCard({
     super.key,
-    required this.value,
     required this.text,
+    required this.value,
     required this.unit,
     required this.onValueChanged,
     this.showButton = false,
@@ -26,11 +26,12 @@ class CTextValueSliderAndButtonCard extends StatelessWidget {
       child: CReusableCard(
         bgColor: CColors.cardBgColor,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               text,
               style: const TextStyle(
-                fontSize: 18,
+                fontSize: 18.0,
                 color: CColors.iconTextColor,
               ),
               textAlign: TextAlign.center,
@@ -49,7 +50,10 @@ class CTextValueSliderAndButtonCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 5),
-                Text(unit),
+                Text(
+                  unit,
+                  style: const TextStyle(fontSize: 18.0),
+                ),
               ],
             ),
 
@@ -78,12 +82,12 @@ class CTextValueSliderAndButtonCard extends StatelessWidget {
               SliderTheme(
                 data: const SliderThemeData(
                   thumbShape: RoundSliderThumbShape(enabledThumbRadius: 14.0),
-                  overlayShape: RoundSliderOverlayShape(overlayRadius: 24.0),
+                  overlayShape: RoundSliderOverlayShape(overlayRadius: 26.0),
                 ),
                 child: Slider(
                   value: value.toDouble(),
-                  min: 100,
-                  max: 300,
+                  min: 50,
+                  max: 260,
                   onChanged: (double newValue) {
                     onValueChanged(newValue.round());
                   },

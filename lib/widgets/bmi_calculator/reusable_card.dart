@@ -6,18 +6,21 @@ class CReusableCard extends StatelessWidget {
     required this.bgColor,
     this.child,
     this.width,
+    this.onTap,
   });
 
   final Color bgColor;
   final Widget? child;
   final double? width;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
+    return GestureDetector(
+      onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.all(10.0),
+        width: width,
+        margin: const EdgeInsets.all(15.0),
         padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           color: bgColor,

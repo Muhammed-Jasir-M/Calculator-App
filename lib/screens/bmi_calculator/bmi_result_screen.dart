@@ -1,56 +1,82 @@
 import 'package:calculator_app/constants/colors.dart';
+import 'package:calculator_app/screens/calculator/calculator_screen.dart';
 import 'package:calculator_app/widgets/bmi_calculator/reusable_card.dart';
 import 'package:calculator_app/widgets/bmi_calculator/container_button.dart';
 import 'package:calculator_app/widgets/common/app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BmiResultScreen extends StatelessWidget {
-  const BmiResultScreen({super.key});
+  const BmiResultScreen({
+    super.key,
+    required this.bmiResult,
+    required this.resultText,
+    required this.interpretation,
+    required this.advice,
+  });
+
+  final String bmiResult, resultText, interpretation, advice;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // Appbar
-      appBar: const CAppBar(title: 'BMI Calculator'),
+      appBar: CAppBar(
+        title: 'BMI Calculator',
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CalculatorScreen(),
+                ),
+              );
+            },
+            icon: const Icon(FontAwesomeIcons.calculator),
+          ),
+        ],
+      ),
       // Body
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Your Result Text
           Expanded(
             child: Container(
-              padding: const EdgeInsets.all(10.0),
-              child: const Align(
-                alignment: Alignment.topLeft,
-                child:  Text(
-                  'Your Result',
-                  style: TextStyle(fontSize: 34.0, fontWeight: FontWeight.w600),
-                ),
+              padding: const EdgeInsets.only(top: 20.0, left: 15.0),
+              alignment: Alignment.bottomLeft,
+              child: const Text(
+                'Your Result',
+                style: TextStyle(fontSize: 34.0, fontWeight: FontWeight.w600),
               ),
             ),
           ),
 
           // Result Card
-          const Expanded(
+          Expanded(
             flex: 5,
             child: CReusableCard(
-              width: double.infinity,
               bgColor: CColors.cardBgColor,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // BMI Result
                   Text(
-                    'Normal',
-                    style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold,
-                        color: CColors.greenText),
+                    resultText,
+                    style: const TextStyle(
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
+                      color: CColors.greenText,
+                    ),
                   ),
 
                   // BMI Value
                   Text(
-                    '15.2',
-                    style: TextStyle(
+                    bmiResult,
+                    style: const TextStyle(
                       fontSize: 100.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -58,8 +84,17 @@ class BmiResultScreen extends StatelessWidget {
 
                   // BMI Remark
                   Text(
-                    'Your BMI is Normal.',
-                    style: TextStyle(
+                    interpretation,
+                    style: const TextStyle(
+                      fontSize: 20.0,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+
+                  // BMI Advice
+                  Text(
+                    advice,
+                    style: const TextStyle(
                       fontSize: 20.0,
                     ),
                     textAlign: TextAlign.center,
@@ -69,11 +104,9 @@ class BmiResultScreen extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 10),
-
           // Calculate Button
           CContainerButton(
-            text: 'Calculate Again',
+            text: 'Re-Calculate',
             onTap: Navigator.of(context).pop,
           ),
         ],
