@@ -1,5 +1,5 @@
 import 'package:calculator_app/constants/colors.dart';
-import 'package:calculator_app/widgets/button.dart';
+import 'package:calculator_app/widgets/calculator/button.dart';
 import 'package:flutter/material.dart';
 
 class CButtonGrid extends StatelessWidget {

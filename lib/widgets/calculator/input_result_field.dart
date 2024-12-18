@@ -43,7 +43,6 @@ class CInputResultField extends StatelessWidget {
         Expanded(
           flex: 1,
           child: SingleChildScrollView(
-            reverse: true,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               alignment: Alignment.centerRight,

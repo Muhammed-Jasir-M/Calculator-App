@@ -1,7 +1,7 @@
 import 'package:calculator_app/constants/colors.dart';
-import 'package:calculator_app/widgets/button_grid.dart';
-import 'package:calculator_app/widgets/app_bar.dart';
-import 'package:calculator_app/widgets/input_result_field.dart';
+import 'package:calculator_app/widgets/calculator/button_grid.dart';
+import 'package:calculator_app/widgets/calculator/input_result_field.dart';
+import 'package:calculator_app/widgets/common/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
@@ -20,17 +20,20 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   void buttonPressed(String value) {
     setState(() {
       switch (value) {
+        // Clears all Input & Result
         case 'C':
           input = '';
           result = '';
           break;
 
+        // Remove one last element from Input
         case 'D':
           if (input.isNotEmpty) {
             input = input.substring(0, input.length - 1);
-          }
+          } 
           break;
 
+        // Compute the expression
         case '=':
           expression = input;
           expression = expression.replaceAll('x', '*').replaceAll('÷', '/');
@@ -45,6 +48,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           }
           break;
 
+        // Append Elements one after another
         default:
           input += value;
       }
@@ -56,7 +60,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     return Scaffold(
       backgroundColor: CColors.primary,
       // Appbar
-      appBar: const CAppBar(),
+      appBar: const CAppBar(title: 'Calculator App'),
+      
+      // Body
       body: Column(
         children: [
           // Display
