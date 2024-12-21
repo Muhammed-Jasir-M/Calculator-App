@@ -1,5 +1,5 @@
-import 'package:calculator_app/screens/bmi_calculator/bmi_calculator_screen.dart';
-// import 'package:calculator_app/screens/calculator/calculator_screen.dart';
+import 'package:calculator_app/constants/theme.dart';
+import 'package:calculator_app/screens/calculator/calculator_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,8 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: const BmiCalculatorScreen(),
+      themeMode: ThemeMode.system,
+      theme: CAppTheme.lightTheme,
+      darkTheme: CAppTheme.darkTheme,
+      home: const CalculatorScreen(),
     );
   }
 }

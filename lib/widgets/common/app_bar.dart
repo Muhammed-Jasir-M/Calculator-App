@@ -31,7 +31,6 @@ class CAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon: const Icon(Icons.arrow_left))
           : null,
       actions: actions,
-      backgroundColor: Colors.green,
     );
   }
 

@@ -30,16 +30,19 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
       appBar: CAppBar(
         title: 'BMI Calculator',
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const CalculatorScreen(),
-                ),
-              );
-            },
-            icon: const Icon(FontAwesomeIcons.calculator),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CalculatorScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(FontAwesomeIcons.calculator),
+            ),
           ),
         ],
       ),

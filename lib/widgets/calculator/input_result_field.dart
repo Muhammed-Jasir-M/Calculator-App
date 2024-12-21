@@ -1,4 +1,5 @@
 import 'package:calculator_app/constants/colors.dart';
+import 'package:calculator_app/constants/utils.dart';
 import 'package:flutter/material.dart';
 
 class CInputResultField extends StatelessWidget {
@@ -12,6 +13,8 @@ class CInputResultField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = CUtils.isDarkMode(context);
+
     return Column(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -28,8 +31,8 @@ class CInputResultField extends StatelessWidget {
               width: double.infinity,
               child: Text(
                 input,
-                style: const TextStyle(
-                  color: CColors.primaryText,
+                style: TextStyle(
+                  color: isDark ? CColors.darkFontColor : CColors.lightFontColor,
                   fontSize: 30,
                 ),
               ),
@@ -50,8 +53,8 @@ class CInputResultField extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Text(
                   result,
-                  style: const TextStyle(
-                    color: CColors.primaryText,
+                  style: TextStyle(
+                  color: isDark ? CColors.darkFontColor : CColors.lightFontColor,
                     fontSize: 35,
                   ),
                 ),

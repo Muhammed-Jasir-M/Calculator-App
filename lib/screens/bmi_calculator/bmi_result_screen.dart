@@ -1,4 +1,5 @@
 import 'package:calculator_app/constants/colors.dart';
+import 'package:calculator_app/constants/utils.dart';
 import 'package:calculator_app/screens/calculator/calculator_screen.dart';
 import 'package:calculator_app/widgets/bmi_calculator/reusable_card.dart';
 import 'package:calculator_app/widgets/bmi_calculator/container_button.dart';
@@ -19,21 +20,26 @@ class BmiResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = CUtils.isDarkMode(context);
+
     return Scaffold(
       // Appbar
       appBar: CAppBar(
         title: 'BMI Calculator',
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const CalculatorScreen(),
-                ),
-              );
-            },
-            icon: const Icon(FontAwesomeIcons.calculator),
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CalculatorScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(FontAwesomeIcons.calculator),
+            ),
           ),
         ],
       ),
@@ -58,7 +64,8 @@ class BmiResultScreen extends StatelessWidget {
           Expanded(
             flex: 5,
             child: CReusableCard(
-              bgColor: CColors.cardBgColor,
+              bgColor:
+                  isDark ? CColors.darkCardBgColor : CColors.lightCardBgColor,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -86,7 +93,7 @@ class BmiResultScreen extends StatelessWidget {
                   Text(
                     interpretation,
                     style: const TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 18.0,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -95,7 +102,7 @@ class BmiResultScreen extends StatelessWidget {
                   Text(
                     advice,
                     style: const TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 18.0,
                     ),
                     textAlign: TextAlign.center,
                   ),

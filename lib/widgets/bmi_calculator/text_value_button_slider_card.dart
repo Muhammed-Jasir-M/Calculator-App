@@ -1,4 +1,5 @@
 import 'package:calculator_app/constants/colors.dart';
+import 'package:calculator_app/constants/utils.dart';
 import 'package:calculator_app/widgets/bmi_calculator/reusable_card.dart';
 import 'package:calculator_app/widgets/bmi_calculator/round_icon_button.dart';
 import 'package:flutter/material.dart';
@@ -22,17 +23,21 @@ class CTextValueSliderAndButtonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = CUtils.isDarkMode(context);
+
     return Expanded(
       child: CReusableCard(
-        bgColor: CColors.cardBgColor,
+        bgColor: isDark ? CColors.darkCardBgColor : CColors.lightCardBgColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               text,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 18.0,
-                color: CColors.iconTextColor,
+                color: isDark
+                    ? CColors.darkIconTextColor
+                    : CColors.lightIconTextColor,
               ),
               textAlign: TextAlign.center,
             ),

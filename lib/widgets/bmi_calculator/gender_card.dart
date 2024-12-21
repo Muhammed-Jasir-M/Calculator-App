@@ -1,4 +1,5 @@
 import 'package:calculator_app/constants/colors.dart';
+import 'package:calculator_app/constants/utils.dart';
 import 'package:calculator_app/widgets/bmi_calculator/icon_details.dart';
 import 'package:calculator_app/widgets/bmi_calculator/reusable_card.dart';
 import 'package:flutter/material.dart';
@@ -19,10 +20,18 @@ class CGenderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = CUtils.isDarkMode(context);
+
     return Expanded(
       child: CReusableCard(
         onTap: onTap,
-        bgColor: isSelected ? CColors.cardBgColor : CColors.inActiveCardBgColor,
+        bgColor: isDark
+            ? (isSelected
+                ? CColors.darkCardBgColor
+                : CColors.darkInActiveCardBgColor)
+            : (isSelected
+                ? CColors.lightCardBgColor
+                : CColors.lightInActiveCardBgColor),
         child: CIconDetails(icon: icon, text: text),
       ),
     );

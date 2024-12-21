@@ -1,4 +1,5 @@
 import 'package:calculator_app/constants/colors.dart';
+import 'package:calculator_app/constants/utils.dart';
 import 'package:flutter/material.dart';
 
 class CIconDetails extends StatelessWidget {
@@ -13,6 +14,8 @@ class CIconDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = CUtils.isDarkMode(context);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -20,7 +23,11 @@ class CIconDetails extends StatelessWidget {
         const SizedBox(height: 15.0),
         Text(
           text,
-          style: const TextStyle(fontSize: 18.0, color: CColors.iconTextColor),
+          style: TextStyle(
+            fontSize: 18.0,
+            color:
+                isDark ? CColors.darkIconTextColor : CColors.lightIconTextColor,
+          ),
         ),
       ],
     );

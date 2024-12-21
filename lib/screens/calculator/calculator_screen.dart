@@ -1,4 +1,3 @@
-import 'package:calculator_app/constants/colors.dart';
 import 'package:calculator_app/screens/bmi_calculator/bmi_calculator_screen.dart';
 import 'package:calculator_app/widgets/calculator/button_grid.dart';
 import 'package:calculator_app/widgets/calculator/input_result_field.dart';
@@ -29,7 +28,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           break;
 
         // Remove one last element from Input
-        case 'D':
+        case '<':
           if (input.isNotEmpty) {
             input = input.substring(0, input.length - 1);
           }
@@ -45,6 +44,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             Expression exp = p.parse(expression);
             ContextModel cm = ContextModel();
             result = '${exp.evaluate(EvaluationType.REAL, cm)}';
+            if (result.endsWith(".0")) {
+              result = result.replaceAll('.0', '');
+              return;
+            }
           } catch (e) {
             result = 'Error';
           }
@@ -60,21 +63,23 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CColors.primary,
       // Appbar
       appBar: CAppBar(
         title: 'Calculator App',
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const BmiCalculatorScreen(),
-                ),
-              );
-            },
-            icon: const Icon(FontAwesomeIcons.weightScale),
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BmiCalculatorScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(FontAwesomeIcons.weightScale),
+            ),
           ),
         ],
       ),
