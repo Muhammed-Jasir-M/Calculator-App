@@ -1,11 +1,9 @@
 import 'package:calculator_app/constants/colors.dart';
 import 'package:calculator_app/constants/utils.dart';
-import 'package:calculator_app/screens/calculator/calculator_screen.dart';
 import 'package:calculator_app/widgets/bmi_calculator/reusable_card.dart';
 import 'package:calculator_app/widgets/bmi_calculator/container_button.dart';
 import 'package:calculator_app/widgets/common/app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BmiResultScreen extends StatelessWidget {
   const BmiResultScreen({
@@ -24,25 +22,7 @@ class BmiResultScreen extends StatelessWidget {
 
     return Scaffold(
       // Appbar
-      appBar: CAppBar(
-        title: 'BMI Calculator',
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CalculatorScreen(),
-                  ),
-                );
-              },
-              icon: const Icon(FontAwesomeIcons.calculator),
-            ),
-          ),
-        ],
-      ),
+      appBar: const CAppBar(title: 'BMI Calculator'),
       // Body
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -92,18 +72,14 @@ class BmiResultScreen extends StatelessWidget {
                   // BMI Remark
                   Text(
                     interpretation,
-                    style: const TextStyle(
-                      fontSize: 18.0,
-                    ),
+                    style: const TextStyle(fontSize: 18.0),
                     textAlign: TextAlign.center,
                   ),
 
                   // BMI Advice
                   Text(
                     advice,
-                    style: const TextStyle(
-                      fontSize: 18.0,
-                    ),
+                    style: const TextStyle(fontSize: 18.0),
                     textAlign: TextAlign.center,
                   ),
                 ],

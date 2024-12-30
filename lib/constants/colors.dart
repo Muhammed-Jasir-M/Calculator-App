@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-enum Gender { male, female }
-
 class CColors {
   static const light = Color(0xFFD1D9E6);
   static const dark = Color(0xFF090C22);
@@ -41,4 +39,8 @@ class CColors {
   static const floatingButtonTextColor = Color(0xFFFFFFFF);
 
   static const greenText = Color(0xFF37DC85);
+
+  static const lightDrawerHeaderColor = Color(0xFFD9EAFD);
+  static const darkDrawerHeaderColor = Color(0xFF171A2C);
+
 }

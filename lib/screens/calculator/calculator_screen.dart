@@ -1,9 +1,8 @@
-import 'package:calculator_app/screens/bmi_calculator/bmi_calculator_screen.dart';
 import 'package:calculator_app/widgets/calculator/button_grid.dart';
 import 'package:calculator_app/widgets/calculator/input_result_field.dart';
 import 'package:calculator_app/widgets/common/app_bar.dart';
+import 'package:calculator_app/widgets/common/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 class CalculatorScreen extends StatefulWidget {
@@ -40,10 +39,13 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           expression = expression.replaceAll('x', '*').replaceAll('÷', '/');
 
           try {
+            // Parse the expression
             Parser p = Parser();
             Expression exp = p.parse(expression);
             ContextModel cm = ContextModel();
             result = '${exp.evaluate(EvaluationType.REAL, cm)}';
+
+            // Remove .0 from the result
             if (result.endsWith(".0")) {
               result = result.replaceAll('.0', '');
               return;
@@ -64,26 +66,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // Appbar
-      appBar: CAppBar(
-        title: 'Calculator App',
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const BmiCalculatorScreen(),
-                  ),
-                );
-              },
-              icon: const Icon(FontAwesomeIcons.weightScale),
-            ),
-          ),
-        ],
-      ),
-
+      appBar: const CAppBar(title: 'Calculator App'),
+      // Drawer
+      drawer: const CDrawer(),
       // Body
       body: Column(
         children: [

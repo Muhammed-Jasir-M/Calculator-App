@@ -1,11 +1,11 @@
-import 'package:calculator_app/constants/colors.dart';
+import 'package:calculator_app/constants/enums.dart';
 import 'package:calculator_app/screens/bmi_calculator/bmi_result_screen.dart';
 import 'package:calculator_app/utils/calculate_bmi.dart';
-import 'package:calculator_app/screens/calculator/calculator_screen.dart';
 import 'package:calculator_app/widgets/bmi_calculator/text_value_button_slider_card.dart';
 import 'package:calculator_app/widgets/bmi_calculator/gender_card.dart';
 import 'package:calculator_app/widgets/bmi_calculator/container_button.dart';
 import 'package:calculator_app/widgets/common/app_bar.dart';
+import 'package:calculator_app/widgets/common/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -27,25 +27,9 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // Appbar
-      appBar: CAppBar(
-        title: 'BMI Calculator',
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CalculatorScreen(),
-                  ),
-                );
-              },
-              icon: const Icon(FontAwesomeIcons.calculator),
-            ),
-          ),
-        ],
-      ),
+      appBar: const CAppBar(title: 'BMI Calculator'),
+      // Drawer
+      drawer: const CDrawer(),
       // Body
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

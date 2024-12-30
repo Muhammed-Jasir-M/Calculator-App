@@ -1,6 +1,5 @@
 import 'dart:math';
-
-import 'package:calculator_app/constants/colors.dart';
+import 'package:calculator_app/constants/enums.dart';
 
 class CCalculateBmi {
   CCalculateBmi({
