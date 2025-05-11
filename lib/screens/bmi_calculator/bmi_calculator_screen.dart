@@ -31,109 +31,111 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
       // Drawer
       drawer: const CDrawer(),
       // Body
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Gender Card Row
-          Expanded(
-            child: Row(
-              children: [
-                // Male Gender Card
-                CGenderCard(
-                  isSelected: selectedGender == Gender.male,
-                  onTap: () {
-                    setState(() {
-                      selectedGender = Gender.male;
-                    });
-                  },
-                  icon: FontAwesomeIcons.mars,
-                  text: 'Male',
-                ),
-
-                // Female Gender Card
-                CGenderCard(
-                  isSelected: selectedGender == Gender.female,
-                  onTap: () {
-                    setState(() {
-                      selectedGender = Gender.female;
-                    });
-                  },
-                  icon: FontAwesomeIcons.venus,
-                  text: 'Female',
-                ),
-              ],
-            ),
-          ),
-
-          // Height Slider Card
-          CTextValueSliderAndButtonCard(
-            text: "Height",
-            value: height,
-            unit: 'cm',
-            onValueChanged: (newValue) {
-              setState(() {
-                height = newValue;
-              });
-            },
-            showSlider: true,
-          ),
-
-          // Weight & Age Card Row
-          Expanded(
-            child: Row(
-              children: [
-                // Weight Button Card
-                CTextValueSliderAndButtonCard(
-                  text: 'Weight',
-                  value: weight,
-                  unit: 'kg',
-                  onValueChanged: (newValue) {
-                    setState(() {
-                      weight = newValue;
-                    });
-                  },
-                  showButton: true,
-                ),
-
-                // Age Button Card
-                CTextValueSliderAndButtonCard(
-                  text: 'Age',
-                  value: age,
-                  unit: 'yr',
-                  onValueChanged: (newValue) {
-                    setState(() {
-                      age = newValue;
-                    });
-                  },
-                  showButton: true,
-                ),
-              ],
-            ),
-          ),
-
-          // Calculate Button
-          CContainerButton(
-            text: 'Calculate BMI',
-            onTap: () {
-              CCalculateBmi calc = CCalculateBmi(
-                height: height,
-                weight: weight,
-              );
-
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BmiResultScreen(
-                    bmiResult: calc.calculateBMI(),
-                    resultText: calc.getResult(),
-                    interpretation: calc.getInterpretation(),
-                    advice: calc.getAdvice(),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Gender Card Row
+            Expanded(
+              child: Row(
+                children: [
+                  // Male Gender Card
+                  CGenderCard(
+                    isSelected: selectedGender == Gender.male,
+                    onTap: () {
+                      setState(() {
+                        selectedGender = Gender.male;
+                      });
+                    },
+                    icon: FontAwesomeIcons.mars,
+                    text: 'Male',
                   ),
-                ),
-              );
-            },
-          ),
-        ],
+
+                  // Female Gender Card
+                  CGenderCard(
+                    isSelected: selectedGender == Gender.female,
+                    onTap: () {
+                      setState(() {
+                        selectedGender = Gender.female;
+                      });
+                    },
+                    icon: FontAwesomeIcons.venus,
+                    text: 'Female',
+                  ),
+                ],
+              ),
+            ),
+
+            // Height Slider Card
+            CTextValueSliderAndButtonCard(
+              text: "Height",
+              value: height,
+              unit: 'cm',
+              onValueChanged: (newValue) {
+                setState(() {
+                  height = newValue;
+                });
+              },
+              showSlider: true,
+            ),
+
+            // Weight & Age Card Row
+            Expanded(
+              child: Row(
+                children: [
+                  // Weight Button Card
+                  CTextValueSliderAndButtonCard(
+                    text: 'Weight',
+                    value: weight,
+                    unit: 'kg',
+                    onValueChanged: (newValue) {
+                      setState(() {
+                        weight = newValue;
+                      });
+                    },
+                    showButton: true,
+                  ),
+
+                  // Age Button Card
+                  CTextValueSliderAndButtonCard(
+                    text: 'Age',
+                    value: age,
+                    unit: 'yr',
+                    onValueChanged: (newValue) {
+                      setState(() {
+                        age = newValue;
+                      });
+                    },
+                    showButton: true,
+                  ),
+                ],
+              ),
+            ),
+
+            // Calculate Button
+            CContainerButton(
+              text: 'Calculate BMI',
+              onTap: () {
+                CCalculateBmi calc = CCalculateBmi(
+                  height: height,
+                  weight: weight,
+                );
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BmiResultScreen(
+                      bmiResult: calc.calculateBMI(),
+                      resultText: calc.getResult(),
+                      interpretation: calc.getInterpretation(),
+                      advice: calc.getAdvice(),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

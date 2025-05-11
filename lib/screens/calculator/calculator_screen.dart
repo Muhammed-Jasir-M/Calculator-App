@@ -70,19 +70,21 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       // Drawer
       drawer: const CDrawer(),
       // Body
-      body: Column(
-        children: [
-          // Display
-          Expanded(
-            flex: 3,
-            child: CInputResultField(input: input, result: result),
-          ),
-          // Button Grid
-          Expanded(
-            flex: 6,
-            child: CButtonGrid(buttonPressed: buttonPressed),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // Display
+            Expanded(
+              flex: 3,
+              child: CInputResultField(input: input, result: result),
+            ),
+            // Button Grid
+            Expanded(
+              flex: 6,
+              child: CButtonGrid(buttonPressed: buttonPressed),
+            ),
+          ],
+        ),
       ),
     );
   }
